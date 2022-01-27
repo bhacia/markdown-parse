@@ -4,7 +4,7 @@ import org.junit.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.ArrayList;
 
 public class MarkdownParseTest {
     @Test
@@ -12,11 +12,24 @@ public class MarkdownParseTest {
         assertEquals(2, 1 + 1);
     }
 
-    /*@Test
+    @Test
     public void testFile1() throws IOException {
-        String contents= Files.readString(Path.of("./test-file.md"));
-        List<String> expect = List.of("https://something.com", "some-page.html");
-        assertEquals(MarkdownParse.getLinks(contents), expect);
-    }*/
+        String contents = Files.readString(Path.of("./test-file1.md"));
+        ArrayList<String> expect = new ArrayList<>();
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
     
+    @Test
+    public void testFile2() throws IOException {
+        String contents = Files.readString(Path.of("./test-file2.md"));
+        ArrayList<String> expect = new ArrayList<>();
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
+    @Test
+    public void testFile3() throws IOException {
+        String contents = Files.readString(Path.of("./test-file3.md"));
+        ArrayList<String> expect = new ArrayList<>();
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
 }
