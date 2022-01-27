@@ -14,21 +14,21 @@ public class MarkdownParseTest {
 
     @Test
     public void testFile1() throws IOException {
-        String contents = Files.readString(Path.of("./test-file1.md"));
+        String contents = Files.readString(Path.of("C:/Users/15624/OneDrive/Documents/GitHub/markdown-parse/test-file1.md"));
         ArrayList<String> expect = new ArrayList<>();
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
     
     @Test
     public void testFile2() throws IOException {
-        String contents = Files.readString(Path.of("./test-file2.md"));
+        String contents = Files.readString(Path.of("C:/Users/15624/OneDrive/Documents/GitHub/markdown-parse/test-file2.md"));
         ArrayList<String> expect = new ArrayList<>();
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 
     @Test
     public void testFile3() throws IOException {
-        String contents = Files.readString(Path.of("./test-file3.md"));
+        String contents = Files.readString(Path.of("C:/Users/15624/OneDrive/Documents/GitHub/markdown-parse/test-file3.md"));
         ArrayList<String> expect = new ArrayList<>();
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
