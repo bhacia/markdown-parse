@@ -1,0 +1,1 @@
+[bracket not used for link]some text(parentheses not used for link)
