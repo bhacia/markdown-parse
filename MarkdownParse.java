@@ -30,7 +30,7 @@ public class MarkdownParse {
             }
 
             int openParenInSite = markdown.indexOf("(", openParen + 1);
-            if(openParenInSite != -1) {
+            if(openParenInSite != -1 && openParenInSite < markdown.indexOf("[", openParen)) {
                 int closeParenInSite = markdown.indexOf(")", openParenInSite);
                 if(openParenInSite != -1 && closeParenInSite != -1) {
                     int closeParen = markdown.indexOf(")", closeParenInSite + 1);
