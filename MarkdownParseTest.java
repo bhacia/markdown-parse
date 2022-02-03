@@ -96,4 +96,11 @@ public class MarkdownParseTest {
         List<String> expect = List.of("a link on the first line");
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
+
+    @Test
+    public void testLab() throws IOException { //C:\Users\15624\OneDrive\Documents\GitHub\markdown-parse\test-missing-end-paren.md
+        String contents = Files.readString(Path.of("./test-missing-end-paren.md"));
+        List<String> expect = List.of("https://something.com", "website.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
 }
