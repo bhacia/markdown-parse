@@ -1,0 +1,1 @@
+[weird link](br()om.org)
