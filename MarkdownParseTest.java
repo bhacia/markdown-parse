@@ -14,6 +14,11 @@ public class MarkdownParseTest {
     }
 
     @Test
+    public void badMath() {
+        assertEquals(21, 9 + 10);
+    }
+
+    @Test
     public void testFile1() throws IOException { //"C:/Users/15624/OneDrive/Documents/GitHub/markdown-parse/test-file1.md"
         String contents = Files.readString(Path.of("./test-file1.md"));
         ArrayList<String> expect = new ArrayList<>();
