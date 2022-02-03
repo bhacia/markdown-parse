@@ -79,7 +79,7 @@ public class MarkdownParseTest {
     @Test
     public void testFile6() throws IOException { //"C:/Users/15624/OneDrive/Documents/GitHub/markdown-parse/test-file6.md"
         String contents = Files.readString(Path.of("./test-file6.md"));
-        List<String> expect = List.of("page.com");
+        ArrayList<String> expect = new ArrayList<>();
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
 
@@ -98,17 +98,9 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void testLab() throws IOException { //C:\Users\15624\OneDrive\Documents\GitHub\markdown-parse\test-missing-end-paren.md
-        String contents = Files.readString(Path.of("./test-missing-end-paren.md"));
-        List<String> expect = List.of("https://something.com", "website.com");
-        assertEquals(expect, MarkdownParse.getLinks(contents));
-    }
-
-    
-    @Test
-    public void testLab() throws IOException { //C:\Users\15624\OneDrive\Documents\GitHub\markdown-parse\test-with-double-paren.md
-        String contents = Files.readString(Path.of("./test-with-double-paren.md"));
-        List<String> expect = List.of("br()om.org");
+    public void testLabAgain() throws IOException { //C:\Users\15624\OneDrive\Documents\GitHub\markdown-parse\test-with-double-paren.md
+        String contents = Files.readString(Path.of("C:/Users/15624/OneDrive/Documents/GitHub/markdown-parse/test-with-double-paren.md")); //./test-with-double-paren.md
+        List<String> expect = List.of("br()om.org", "haha.com");
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 }

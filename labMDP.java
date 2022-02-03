@@ -4,47 +4,30 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class MarkdownParse {
+public class labMDP {
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
         // the next )
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
-            if (markdown.indexOf("(", currentIndex) == -1 || markdown.indexOf(")", currentIndex) == -1 ||
-                markdown.indexOf("[", currentIndex) == -1 || markdown.indexOf("]", currentIndex) == -1) {
+            if (markdown.indexOf(")", currentIndex) == -1) {
                 break;
             }
-
-            if(markdown.indexOf("!", currentIndex) == currentIndex) {
-                break; //shouldn't be an image
-            }
-
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
+            //System.out.println(nextOpenBracket);
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
-
-            int openParen = nextCloseBracket + 1;
+            int openParen = nextCloseBracket + 1; // fix: [weird link](br()om.org)
             char possibleOpenParam = markdown.charAt(openParen);
-            if (possibleOpenParam != '(') {
-                break; //check if openParen is actually "(" for valid link
-            }
-
-            int openParenInSite = markdown.indexOf("(", openParen + 1);
-            if(openParenInSite != -1) {
-                int closeParenInSite = markdown.indexOf(")", openParenInSite);
-                if(openParenInSite != -1 && closeParenInSite != -1) {
-                    int closeParen = markdown.indexOf(")", closeParenInSite + 1);
-                    if(closeParen < markdown.indexOf("[", nextCloseBracket)) {
-                        toReturn.add(markdown.substring(openParen + 1, closeParen));
-                        currentIndex = closeParen + 1;
-                    }
-                }
-            }
-            else {
-                //else: there's no extra open paren
+            if (nextOpenBracket == -1 || nextCloseBracket == -1) break;
+            if (possibleOpenParam != '(') break;
+            if (markdown.charAt(nextCloseBracket + 1) == '(' && (markdown.indexOf(")", currentIndex) < markdown.indexOf("[", nextCloseBracket) ||
+             markdown.indexOf("[", nextCloseBracket) == -1 && markdown.indexOf(")", currentIndex) != -1)) {
                 int closeParen = markdown.indexOf(")", openParen);
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
                 currentIndex = closeParen + 1;
+            } else {
+                currentIndex++;
             }
         }
         return toReturn;
