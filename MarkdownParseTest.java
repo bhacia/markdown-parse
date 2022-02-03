@@ -14,8 +14,8 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void badMath() {
-        assertEquals(21, 9 + 10);
+    public void goodMath() {
+        assertEquals(19, 9 + 10);
     }
 
     @Test
